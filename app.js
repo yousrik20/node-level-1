@@ -5,38 +5,36 @@ const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
 const Mydata = require("./models/mydataSchema");
 app.set("view engine", "ejs");
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 // Auto Refresh
 const path = require("path");
 const livereload = require("livereload");
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, 'public'));
- 
- 
+liveReloadServer.watch(path.join(__dirname, "public"));
+
 const connectLivereload = require("connect-livereload");
 app.use(connectLivereload());
- 
+
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
     liveReloadServer.refresh("/");
   }, 100);
 });
 
-
-
 // Get Request
 app.get("/", (req, res) => {
-  Mydata.find()
-    .then((result) => {
-      res.render("home", { mytitle: "Home page" ,arr:result});
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  res.render("index", { });
 });
-app.get("/views/index.html", (req, res) => {
-  res.sendFile("./views/index.html", { root: __dirname });
+app.get("/user/add.html", (req, res) => {
+     res.render('./user/add');
+});
+app.get("/user/view.html", (req, res) => {
+     res.render('./user/view');
+});
+
+app.get("/user/edit.html", (req, res) => {
+     res.render('./user/edit');
 });
 mongoose
   .connect(
@@ -51,16 +49,4 @@ mongoose
     console.log(err);
   });
 
-  // Post Request
-app.post("/", (req, res) => {
-  console.log(req.body);
-  const mydata = new Mydata(req.body);
-  mydata
-    .save()
-    .then(() => {
-      res.redirect("./views/index.html");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+// Post Request
