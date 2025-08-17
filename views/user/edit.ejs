@@ -6,7 +6,7 @@
       rel="stylesheet"
       href="../bootstrap-icons-1.10.5/font/bootstrap-icons.min.css"
     />
-    <link rel="shortcut icon" href="../img/ali.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/ali.png" type="image/x-icon" />
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,35 +20,34 @@
 
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="../css/dark-light.css"/>
+    <link rel="stylesheet" href="../css/dark-light.css" />
 
     <!-- Custom styles for this template -->
     <link href="../css/sidebars.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/myStyle.css" />
   </head>
   <body>
-<%- include('../Components/dark-light.ejs') %>
+    <%- include('../Components/dark-light.ejs') %>
     <main class="d-flex flex-nowrap">
- <%- include('../Components/sidebar.ejs',{currentPage:"edit"}) %>
+      <%- include('../Components/sidebar.ejs',{currentPage:"edit"}) %>
       <section class="w-100">
         <%- include('../Components/navbar.ejs') %>
 
-        <nav class="px-2 mt-4 d-flex flex-wrap justify-content-between" aria-label="breadcrumb">
+        <nav
+          class="px-2 mt-4 d-flex flex-wrap justify-content-between"
+          aria-label="breadcrumb"
+        >
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Ali Hassan</li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Ali Hassan
+            </li>
           </ol>
 
-
-          <p class="me-md-5"> <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c</p>
+          <p class="me-md-5">
+            <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c
+          </p>
         </nav>
-
-
-
-
-
-
-
 
         <form class="mx-0 row gx-3 gy-4 mt-2">
           <div class="col-md-6">
@@ -161,7 +160,9 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">Are you sure you want to continue delete the customer?</div>
+            <div class="modal-body">
+              Are you sure you want to continue delete the customer?
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -170,9 +171,9 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-danger">
-                Delete
-              </button>
+              <form method="post" action="/edit/<%= obj._id %>?_method=DELETE" >
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </div>
           </div>
         </div>
