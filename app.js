@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001;
 const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: true }));
 const Mydata = require("./models/mydataSchema");
@@ -23,9 +23,9 @@ liveReloadServer.server.once("connection", () => {
 });
 
 // Get Request
-app.get("/", (req, res) => {
-  res.render("index", { });
-});
+app.get("/",(req,res)=>{
+    res.render("index")
+})
 app.get("/user/add.html", (req, res) => {
      res.render('./user/add');
 });
