@@ -32,6 +32,9 @@
       <%- include('./Components/sidebar.ejs',{currentPage:'index'}) %>
       <section class="w-100">
         <%- include('./Components/navbar.ejs') %>
+        <% if (arr.length===0) { %>
+         <h1 style="text-align: center;margin-top: 4rem;">No Data Available</h1>
+        <% }else{ %>
         <table
           style="width: 99%"
           class="text-center mx-auto table mt-5 table-striped table-bordered"
@@ -89,6 +92,7 @@
             </tr>
 
             <% }) %>
+            <% } %>
           </tbody>
         </table>
       </section>
