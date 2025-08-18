@@ -20,17 +20,23 @@
 
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
- <link rel="stylesheet" href="../css/dark-light.css"/>
+    <link rel="stylesheet" href="../css/dark-light.css">
+
+
     <!-- Custom styles for this template -->
     <link href="../css/sidebars.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/myStyle.css" />
   </head>
   <body>
-<%- include('../Components/dark-light.ejs') %>
+    <%- include('../Components/dark-light.ejs') %>
+
     <main class="d-flex flex-nowrap">
-<%- include('../Components/sidebar.ejs',{currentPage:'search'}) %>
+      <%- include('../Components/sidebar.ejs', {currentPage: "search"}) %>
+
+
       <section class="w-100">
         <%- include('../Components/navbar.ejs') %>
+
         <table
           style="width: 99%"
           class="text-center mx-auto table mt-5 table-striped table-bordered"
@@ -46,12 +52,12 @@
             </tr>
           </thead>
           <tbody>
-            <% arr.forEach((item,index) => { %>
-             
-           
+
+
+          <% arr.forEach( (item, index) => { %>
             <tr>
-              <th scope="row"><%= index + 1 %></th>
-              <td><%= item.firstName %> <%= item.lastName %></td>
+              <th scope="row"> <%= index+1 %></th>
+              <td> <%= item.firstName %>  <%= item.lastName %> </td>
               <td><%= item.gender %></td>
               <td><%= item.country %></td>
 
@@ -74,7 +80,11 @@
                 >
                   <i class="bi bi-pencil"></i>
                 </a>
-                <form style="display: inline;" method="post" action="/edit/<%= item._id %>?_method=DELETE">
+                <form
+                style="display: inline;"
+                  action="/edit/<%= item._id %>?_method=DELETE"
+                  method="post"
+                >
                   <button
                     data-bs-toggle="tooltip"
                     data-bs-title="Delete user"
@@ -86,7 +96,12 @@
                 </form>
               </td>
             </tr>
-             <% }) %>
+          <% }) %>
+        
+        
+        
+        
+        
           </tbody>
         </table>
       </section>

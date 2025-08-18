@@ -1,22 +1,12 @@
+
 const express = require("express");
 const router = express.Router();
 const User = require("../models/customerSchema");
-var moment = require("moment"); // require
+const userController = require("../controllers/userController");
+var moment = require("moment");
 
-router.get("", (req, res) => {
-  res.render("user/add");
-});
-// POST Request
-router.post("", (req, res) => {
-  User.create(req.body)
-    .then(() => {
-      res.redirect("/");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-
+router.get("", userController.user_add_get);
+// POST Requst
+router.post("", userController.user_post);
 
 module.exports = router;
