@@ -69,7 +69,8 @@ app.post("/user/add.html", (req, res) => {
 
 app.post("/search", (req, res) => {
   console.log('***************************************')
-  User.find({$or:[{firstName:"ali"},{lastName:"ali"}]})
+  const searchText=req.body.searchText.trim();
+  User.find({$or:[{firstName:searchText},{lastName:searchText}]})
     .then((result) => {
       console.log(result);
       res.render("user/search", { arr: result, moment: moment });
