@@ -42,9 +42,9 @@ app.get("/user/add.html", (req, res) => {
 });
 
 app.get("/edit/:id", (req, res) => {
-  User.findById(req.params.id).then((result)=>{
-    res.render("./user/edit",{obj:result,moment:moment});
-  })
+  User.findById(req.params.id).then((result) => {
+    res.render("./user/edit", { obj: result, moment: moment });
+  });
 });
 
 app.get("/view/:id", (req, res) => {
@@ -58,9 +58,7 @@ app.get("/view/:id", (req, res) => {
 });
 // POST Request
 app.post("/user/add.html", (req, res) => {
-  const user = new User(req.body);
-  user
-    .save()
+  User.create(req.body)
     .then(() => {
       res.redirect("/");
     })
@@ -79,6 +77,15 @@ app.delete("/edit/:id", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+// PUT Request
+app.put("/edit/:id", (req, res) => {
+   User.findByIdAndUpdate(req.params.id,req.body).then(()=>{
+    res.redirect("/");
+   }).catch((err)=>{
+    console.log(err);
+   })
 });
 
 mongoose
